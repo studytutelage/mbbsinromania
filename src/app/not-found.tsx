@@ -1,0 +1,67 @@
+import Link from "next/link";
+import { GraduationCap, Home, Search, ArrowLeft } from "lucide-react";
+
+export default function NotFound() {
+    return (
+        <div className="min-h-screen bg-gradient-to-br from-blue-50 to-white flex items-center justify-center px-4">
+            <div className="max-w-lg w-full text-center">
+                {/* Logo */}
+                <div className="flex justify-center mb-6">
+                    <div className="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center shadow-lg">
+                        <GraduationCap className="w-10 h-10 text-white" />
+                    </div>
+                </div>
+
+                {/* 404 */}
+                <h1 className="text-8xl font-black text-blue-600 mb-2 leading-none">404</h1>
+                <h2 className="text-2xl font-bold text-gray-900 mb-3">Page Not Found</h2>
+                <p className="text-gray-500 mb-8 leading-relaxed">
+                    Sorry, the page you&apos;re looking for doesn&apos;t exist or has been moved.
+                    Let&apos;s get you back on track.
+                </p>
+
+                {/* Actions */}
+                <div className="flex flex-col sm:flex-row gap-3 justify-center mb-10">
+                    <Link
+                        href="/"
+                        className="inline-flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-xl font-semibold transition-colors"
+                    >
+                        <Home className="w-4 h-4" />
+                        Go Home
+                    </Link>
+                    <Link
+                        href="/universities"
+                        className="inline-flex items-center justify-center gap-2 border-2 border-blue-600 text-blue-600 hover:bg-blue-50 px-6 py-3 rounded-xl font-semibold transition-colors"
+                    >
+                        <Search className="w-4 h-4" />
+                        Browse Universities
+                    </Link>
+                </div>
+
+                {/* Quick links */}
+                <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-5 text-left">
+                    <p className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-3">Popular Pages</p>
+                    <div className="grid grid-cols-2 gap-2">
+                        {[
+                            { label: "Universities", href: "/universities" },
+                            { label: "Scholarships", href: "/scholarships" },
+                            { label: "Compare Universities", href: "/compare" },
+                            { label: "About Romania", href: "/about-romania" },
+                            { label: "FMGE Pass Rates", href: "/fmge-rates" },
+                            { label: "Contact Us", href: "/contact-us" },
+                        ].map((l) => (
+                            <Link
+                                key={l.href}
+                                href={l.href}
+                                className="flex items-center gap-1.5 text-sm text-gray-600 hover:text-blue-600 transition-colors py-1"
+                            >
+                                <ArrowLeft className="w-3 h-3 rotate-180" />
+                                {l.label}
+                            </Link>
+                        ))}
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
+}
